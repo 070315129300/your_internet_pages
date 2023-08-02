@@ -27,7 +27,9 @@ class PagesController extends Controller
         $product = product::all();
         return view('pages/productpage', compact('product'));
     }
-    public function cartpage($id){
+    public function cartpage(){
+        $user=Auth::user();
+        $id = $user->id;
         $cartItems = Cart::where('user_id',$id )->get();
         return view('pages/cart', compact('cartItems'));
 

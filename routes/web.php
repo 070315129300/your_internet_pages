@@ -30,7 +30,7 @@ require __DIR__.'/auth.php';
 //pages
 Route::get('/', [PagesController::class,'index']);
 Route::get('productpage', [PagesController::class,'productpage']);
-Route::get('cartpage/{id}', [PagesController::class,'cartpage']);
+Route::get('cartpage', [PagesController::class,'cartpage']);
 Route::get('contact', [PagesController::class,'contact']);
 Route::get('checkoutpage', [PagesController::class,'checkoutpage']);
 Route::get('singleproduct/{id}', [PagesController::class,'singleproduct']);

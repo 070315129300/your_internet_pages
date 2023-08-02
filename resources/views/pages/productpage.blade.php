@@ -34,7 +34,12 @@
 {{--                                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>--}}
 {{--                                                    </div>--}}
                                                     <div class="product-action-2">
-                                                        <a title="Add to cart" href="cartpage">Add to cart</a>
+                                                        <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <submit><a>add to cart</a> </submit>
+                                                            <input type="number" name="quantity" value="1" hidden>
+                                                            <input type="submit" value="add">
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

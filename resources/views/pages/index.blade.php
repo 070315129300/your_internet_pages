@@ -395,7 +395,12 @@
                                             {{--                                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>--}}
                                             {{--                                                    </div>--}}
                                             <div class="product-action-2">
-                                                <a title="Add to cart" href="cartpage">Add to cart</a>
+                                                <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <submit><a>add to cart</a> </submit>
+                                                    <input type="number" name="quantity" value="1" hidden>
+                                                    <input type="submit" value="add">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -458,40 +463,27 @@
                             <div class="list-image overlay">
                                 <img src='productimage/{{$watches->image1}}' alt="#">
                                 <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 no-padding">
                             <div class="content">
                                 <h4 class="title"><a href="#">{{$watches->name}}</a></h4>
                                 <p class="price with-discount">{{$watches->price}}</p>
+                                <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
+                                    @csrf
+
+                                    <input type="number" name="quantity" value="1" hidden>
+                                    <input type="submit" value="Add To Cart" class="price with-discount">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-                <!-- End Single List  -->
-                <!-- Start Single List  -->
-                <div class="single-list">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="list-image overlay">
-                                <img src="https://via.placeholder.com/115x140" alt="#">
-                                <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 no-padding">
-                            <div class="content">
-                                <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                                <p class="price with-discount">$44</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single List  -->
-                <!-- Start Single List  -->
 
-                <!-- End Single List  -->
             </div>
+
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="row">
                     <div class="col-12">
@@ -515,34 +507,20 @@
                             <div class="content">
                                 <h5 class="title"><a href="#">{{$glasses->name}}</a></h5>
                                 <p class="price with-discount">{{$glasses->price}}</p>
+                                <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
+                                    @csrf
+
+                                    <input type="number" name="quantity" value="1" hidden>
+                                    <input type="submit" value="Add To Cart" class="price with-discount">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-                <!-- End Single List  -->
-                <!-- Start Single List  -->
-                <div class="single-list">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="list-image overlay">
-                                <img src="https://via.placeholder.com/115x140" alt="#">
-                                <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 no-padding">
-                            <div class="content">
-                                <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                                <p class="price with-discount">$33</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single List  -->
-                <!-- Start Single List  -->
 
-                <!-- End Single List  -->
             </div>
+
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="row">
                     <div class="col-12">
@@ -565,31 +543,18 @@
                             <div class="content">
                                 <h5 class="title"><a href="#">{{$belts->name}}</a></h5>
                                 <p class="price with-discount">{{$belt->price}}</p>
+                                <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
+                                    @csrf
+
+                                    <input type="number" name="quantity" value="1" hidden>
+                                    <input type="submit" value="Add To Cart" class="price with-discount">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-                <!-- End Single List  -->
-                <!-- Start Single List  -->
-                <div class="single-list">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="list-image overlay">
-                                <img src="https://via.placeholder.com/115x140" alt="#">
-                                <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 no-padding">
-                            <div class="content">
-                                <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                                <p class="price with-discount">$35</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single List  -->
-                <!-- Start Single List  -->
+
 
                 <!-- End Single List  -->
             </div>
