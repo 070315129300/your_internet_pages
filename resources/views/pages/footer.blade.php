@@ -8,7 +8,7 @@
                     <!-- Single Widget -->
                     <div class="single-footer about">
                         <div class="logo">
-                            <a href="/"><img src="images/logo1.jpeg" style="height: 50px; width: 80px; " alt="logo"></a>
+                            <a href="/"><img src="images/logo4.jpeg" style="height: 100px; width: 80px; " alt="logo"></a>
                         </div>
                         <p class="text">olu-aina ayo tell me about your company</p>
                         <p class="call">Got Question? Call us 24/7<span><a href="">+234 (0) 8021398878</a></span></p>

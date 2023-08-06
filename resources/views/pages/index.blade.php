@@ -80,10 +80,24 @@
                     <div class="right-content">
                         <ul class="list-main">
 
-                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
                             <li><i class="ti-user"></i> <a href="#">My account</a></li>
-                            <li><i class="ti-power-off"></i><a href="login">Login</a></li>
+                            @if( Auth::user())
+                                <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')"
+                                                     onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                        <i class="ti-power-off"></i>Logout
+
+                                    </x-dropdown-link>
+                                </form>
+                                </li>
+                            @else
+                                <li><i class="ti-power-off"></i><a href="login">Login</a></li>
                             <li><i class="ti-power-off"></i><a href="register">Register</a></li>
+                                @endif
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -98,7 +112,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="/"><img src="images/logo.jpeg" style="height: 50px; width: 80px; " alt="logo"></a>
+                        <a href="/"><img src="images/logo3.jpeg" style="height: 70px; width: 80px; " alt="logo"></a>
                     </div>
                     <!--/ End Logo -->
                     <!-- Search Form -->
@@ -136,36 +150,55 @@
                 <div class="col-lg-2 col-md-3 col-12">
                     <div class="right-bar">
                         <!-- Search Form -->
+                        @if( ! Auth::user())
                         <div class="sinlge-bar">
                             <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                         </div>
+                        @else
+                            <div class="sinlge-bar">
+                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Hello {{Auth::user()->firstname}}</i></a>
+
+                            </div>
+                            @endif
+
+
                         <div class="sinlge-bar shopping">
-                            <a href="cartpage" class="single-icon"><i class="ti-bag"></i> <span class="total-count"></span></a>
+                            @if (is_string($cart))
+                                <a class="single-icon"><i class="ti-bag"></i> <span class="total-count"></span></a>
+
+                            @else
+                                <a href="cartpage" class="single-icon"><i class="ti-bag"></i> <span class="total-count"></span></a>
+                            @endif
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
                                     <span> Items</span>
-                                    <a href="cartpage">View Cart</a>
+                                    @if (is_string($cart))
+                                    <a>View Cart</a>
+                                    @else
+                                        <a href="cartpage">View Cart</a>
+                                    @endif
                                 </div>
-                                <ul class="shopping-list">
-                                    @foreach($cart as $carts)
-                                    <li>
-                                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
 
-                                        <a class="cart-img" href="cartpage"><img src="productimage/{{$carts->image}}" alt="#"></a>
-                                        <h4><a href="cartpage">{{$carts->productname}}</a></h4>
-                                        <p class="quantity">1x - <span class="amount">{{$carts->price}}</span></p>
-                                    </li>
-                                    @endforeach
+                                @if (is_string($cart))
+                                    <p>login to see cart items</p>
+                                @else
+                                    <ul class="shopping-list">
+                                        @foreach ($cart as $carts)
+                                            <li>
+                                                <td class="action" data-title="Remove"><a onclick="return confirm('are you sure you want to remove this cart')" href="{{url('removecart', $carts->id)}}"><i class="ti-trash remove-icon"></i></a></td>
+                                                <a class="cart-img" href="cartpage"><img src="productimage1/{{$carts->image}}" alt="#"></a>
+                                                <h4><a href="cartpage">{{$carts->productname}}</a></h4>
+                                                <p class="quantity">1x - <span class="amount">{{$carts->price}}</span></p>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <div class="bottom">
 
-                                </ul>
-                                <div class="bottom">
-                                    <div class="total">
-                                        <span>Total</span>
-                                        <span class="total-amount">$134.00</span>
+                                        <a href="checkoutpage" class="btn animate">Checkout</a>
                                     </div>
-                                    <a href="checkoutpage" class="btn animate">Checkout</a>
-                                </div>
+                                @endif
+
                             </div>
                             <!--/ End Shopping Item -->
                         </div>
@@ -322,7 +355,7 @@
                                                 <div class="product-img">
                                                     <a href="singleproduct/{{$products->id}}">
 
-                                                        <img class="default-img" src="productimage/{{$products->image4}}" style="width: 500px; height: 350px;"  alt="#">
+                                                        <img class="default-img" src="productimage1/{{$products->image1}}" style="width: 200px; height: 300px;" alt="#">
                                                         {{--                                                    <img class="hover-img" src="productimage/{{$products->image}}" style="width: 550px; height: 330px;" alt="#">--}}
                                                     </a>
                                                     <div class="button-head">
@@ -385,7 +418,7 @@
                                     <div class="product-img">
                                         <a href="singleproduct/{{$products->id}}">
 
-                                            <img class="default-img" src="productimage/{{$products->image4}}" style="width: 500px; height: 350px;"  alt="#">
+                                            <img class="default-img" src="productimage1/{{$products->image4}}" style="width: 500px; height: 350px;"  alt="#">
                                             {{--                                                    <img class="hover-img" src="productimage/{{$products->image}}" style="width: 550px; height: 330px;" alt="#">--}}
                                         </a>
                                         <div class="button-head">
@@ -461,7 +494,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="list-image overlay">
-                                <img src='productimage/{{$watches->image1}}' alt="#">
+                                <img src='productimage1/{{$watches->image1}}' alt="#">
                                 <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
 
                             </div>
@@ -499,7 +532,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="list-image overlay">
-                                <img src='productimage/{{$glasses->image1}}' alt="#">
+                                <img src='productimage1/{{$glasses->image1}}' alt="#">
                                 <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
                             </div>
                         </div>
@@ -535,14 +568,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="list-image overlay">
-                                <img src='productimage/{{$belts->image1}}' alt="#">
+                                <img src='productimage1/{{$belts->image1}}' alt="#">
                                 <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 no-padding">
                             <div class="content">
                                 <h5 class="title"><a href="#">{{$belts->name}}</a></h5>
-                                <p class="price with-discount">{{$belt->price}}</p>
+                                <p class="price with-discount">{{$belts->price}}</p>
                                 <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
                                     @csrf
 

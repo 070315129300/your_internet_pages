@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\cart;
+use App\Models\category;
+use App\Models\product;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +23,20 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
+
         return view('auth.register');
+
+//        $category = category::all();
+//        $product = product::paginate();
+//        $user=Auth::user();
+//        if(! $user){
+//            $cart = 'login to see cart items ';
+//            return view('pages/productpage', compact( 'category','product','user','cart'));
+//        }else{
+//            $id = $user->id;
+//            $cart = cart::where('user_id', $id)->orderBy('id','desc')->paginate(3);
+//        }
+//        return view('auth.register', compact(  'category','cart'));
     }
 
     /**

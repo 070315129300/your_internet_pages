@@ -35,26 +35,14 @@ class CartController extends Controller
          $cart->quantity=$request->quantity;
          $cart->image= $product->image1;
          $cart->save();
-//                $image1 = $product->image1;
-//                if($image1) {
-//                    $imagename =time().'.'.$image1->getClientoriginalExtension();
-//
-//                    $request->image1->move('cartimage', $imagename);
-//                    $cart->image = $imagename;
-//                }
+
         return redirect()->back();
 
        }else{
           return redirect('login');
        }
 
-//        $cartItem = Cart::updateOrCreate(
-//            ['product_id' => $product->id],
-//            ['quantity' => $request->quantity]
-//        );
-//
-//        // Redirect back to the product page or show a success message
-//        return back()->with('success', 'Product added to cart successfully.');
+
     }
 
     public function remove(Cart $cartItem)
@@ -65,4 +53,57 @@ class CartController extends Controller
         // Redirect back to the cart page or show a success message
         return back()->with('success', 'Product removed from cart.');
     }
+
+    public  function addquantity($id){
+        $data = cart::find($id);
+        $data->quantity = $data->quantity + 1;
+        $data->save();
+        return redirect()->back();
+    }
+    public  function removequantity($id){
+        $data = cart::find($id);
+        $data->quantity = $data->quantity - 1;
+        if($data->quantity < '1'){
+            $data->quantity = '1';
+        }
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function removecart($id){
+        $cart = cart::find($id);
+        $cart->delete();
+        return redirect()->back();
+    }
+    public function payondelivery(Request $request){
+        $user=Auth::user();
+        $userid = $user->id;
+        $data=cart::where('user_id','=',$userid)->get();
+        foreach($data as $data)
+        {
+            $order = new order;
+          $order->firstname = $data->name;
+          $order->lastname = $data->name;
+            $order->email = $data->email;
+            $order->phone = $data->phone;
+            $order->address = $request->address;
+            $order->productname = $data->productname;
+            $order->price = $data->price;
+            $order->image = $data->image;
+            $order->user_id = $data->user_id;
+            $order->product_id = $data->product_id;
+            $order->quantity = $data->quantity;
+            $order->payment_status = 'cash on delivery';
+            $order->delivery_status = 'processing';
+            $order->save();
+            $cart_id = $data->id;
+            $cart = cart::find($cart_id);
+            $cart->delete();
+// pk_live_267cb7104250b004636af9765daf70a3f4d09e26
+            // live key sk_live_1ac92f344f7ed331b9d14b6518ba55d8646f6376
+        }
+        return redirect()->back()->with('message','Thank You For Your Order');
+    }
 }
+
+

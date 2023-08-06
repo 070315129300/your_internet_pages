@@ -9,7 +9,7 @@
                 <div class="bread-inner">
                     <ul class="bread-list">
                         <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="blog-single.html">Cart</a></li>
+                        <li class="active"><a href="">Cart</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,34 +36,42 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($cartItems as $cartItem)
+                    @foreach($cart as $cartItem)
                     <tr>
-                        <td class="image" data-title="No"><img src="productimage/{{$cartItem->image}}" alt="#"></td>
+                        <td class="image" data-title="No"><img src="productimage1/{{$cartItem->image}}" alt="#"></td>
                         <td class="product-des" data-title="Description">
                             <p class="product-name">{{$cartItem->productname}}</p>
                             <p class="product-des">{{$cartItem->details}}</p>
                         </td>
-                        <td class="price" data-title="Price"><span>{{$cartItem->price}} </span></td>
+                        <td class="price" data-title="Price"><span>&#8358; {{$cartItem->price}} </span></td>
                         <td class="qty" data-title="Qty"><!-- Input Order -->
                             <div class="input-group">
                                 <div class="button minus">
-                                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[{{$cartItem->product_id}}]">
                                         <i class="ti-minus"></i>
                                     </button>
+                        <span>
+                            <a class="btn btn-danger" href="{{url('addquantity', $cartItem->id)}}"> add</a>
+                        </span>
                                 </div>
-                                <input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="20" value="1">
+                                <input type="text" name="quant[{{$cartItem->product_id}}]" class="input-number" data-min="1" data-max="20" value="{{$cartItem->quantity}}">
                                 <div class="button plus">
-                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[{{$cartItem->product_id}}]">
                                         <i class="ti-plus"></i>
                                     </button>
+                                    <span>
+                            <a class="btn btn-danger" href="{{url('removequantity', $cartItem->id)}}"> remove</a>
+                        </span>
                                 </div>
                             </div>
                             <!--/ End Input Order -->
                         </td>
-                        <td class="total-amount" data-title="Total"><span>$220.88</span></td>
-                        <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+                        <td class="total-amount" data-title="Total"><span>&#8358; {{$cartItem->price * $cartItem->quantity}}</span></td>
+                        <td class="action" data-title="Remove"><a onclick="return confirm('are you sure you want to remove this cart')" href="{{url('removecart', $cartItem->id)}}"><i class="ti-trash remove-icon"></i></a></td>
                     </tr>
                     @endforeach
+
+
 
                     </tbody>
                 </table>
@@ -83,9 +91,9 @@
                         <div class="col-lg-4 col-md-7 col-12">
                             <div class="right">
                                 <ul>
-                                    <li>Cart Subtotal<span>$330.00</span></li>
+                                    <li>Cart Subtotal<span>&#8358; {{$cartItem->price * $cartItem->quantity}}</span></li>
                                     <li>Shipping<span>2500</span></li>
-                                    <li class="last">You Pay<span>$310.00</span></li>
+                                    <li class="last">You Pay<span>&#8358; {{$cartItem->price * $cartItem->quantity}}</span></li>
                                 </ul>
                                 <div class="button5">
                                     <a href="checkoutpage" class="btn">Checkout</a>

@@ -5,6 +5,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PagesController;
@@ -69,9 +70,15 @@ Route::delete('deleteAProduct/id', [ProductController::class, 'deleteAProduct'])
 Route::post('createProduct', [ProductController::class, 'createProduct']);
 //cart
 Route::post('/addcart/{id}', [CartController::class, 'addcart']);
-Route::post('/cart/remove/{cartItem}', [CartController::class, 'removecart']);
+Route::get('removecart/{id}', [CartController::class, 'removecart']);
 Route::delete('deletecart/{id}', [CartController::class, 'deletecart']);
+Route::get('addquantity/{id}',[CartController::class, 'addquantity']);
+Route::get('removequantity/{id}',[CartController::class, 'removequantity']);
 
+//Payment
+Route::post('payondelivery',[CartController::class,'payondelivery']);
+Route::post('pay',[PaymentController::class,'redirectToGateway'])->name('pay');
+Route::get('/paymentcallback', [PaymentController::class, 'handleGatewayCallback'])->name('name.callback');
 //admin panel
 Route::get('indexadmin', [AdminController::class, 'indexadmin']);
 Route::get('product',[AdminController::class,'product']);

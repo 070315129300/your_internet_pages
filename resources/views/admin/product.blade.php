@@ -51,7 +51,7 @@
                         <td>{{$products->brandname}}</td>
                         <td>{{$products->price}}</td>
                         <td>
-                            <img src="productimage/{{$products->image1}}">
+                            <img src="productimage1/{{$products->image1}}">
                         </td>
                     </tr>
                     @endforeach
