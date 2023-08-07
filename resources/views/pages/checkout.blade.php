@@ -44,7 +44,7 @@
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Email Address<span>*</span></label>
-                                    <input type="email" name="email" placeholder="" required="required" value="{{Auth::user()->email}}">
+                                    <input type="email" name="email" placeholder="" id="emailinput" required="required" value="{{Auth::user()->email}}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
@@ -56,11 +56,21 @@
 
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <label>Address Line 1<span>*</span></label>
-                                    <input type="text" name="address" placeholder="" required="required" >
+                                    <label>Address Line <span>*</span></label>
+                                    <input type="text" name="address" placeholder="delivery address" id="addressInput" required="required" >
                                 </div>
                             </div>
+{{--                                    //--}}
+{{--                            <!-- Address Input -->--}}
+{{--                            <input type="text" name="address" id="addressInput" placeholder="" required="required">--}}
 
+{{--                            <!-- Display the address in another span tag -->--}}
+{{--                            <span id="addressDisplay"></span>--}}
+
+{{--                            <!-- Display the address in another input field -->--}}
+{{--                            <input type="text" name="displayAddress" id="displayAddressInput" readonly>--}}
+
+{{--                            //--}}
                         </div>
                     </form>
                     <!--/ End Form -->
@@ -70,12 +80,26 @@
                 <div class="order-details">
                     <!-- Order Widget -->
                     <div class="single-widget">
+                        <ul style="display: none">
+                            @php
+                                $grandTotal = 0; // Initialize the grand total variable
+                            @endphp
+
+                            @foreach($cart as $product)
+                                <li>{{$product->name}} - {{$product->quantity}} x &#8358;{{$product->price}} = &#8358;{{$product->price * $product->quantity}}</li>
+                                @php
+                                    $grandTotal += $product->price * $product->quantity; // Add the subtotal to the grand total
+                                @endphp
+                            @endforeach
+
+                        </ul>
+
                         <h2>CART  TOTALS</h2>
                         <div class="content">
                             <ul>
-                                <li>Sub Total<span>$330.00</span></li>
-                                <li>(+) Shipping<span>2500.00</span></li>
-                                <li class="last">Total<span>$340.00</span></li>
+                                <li>Sub Total<span>&#8358; {{$grandTotal}}</span></li>
+                                <li>(+) Shipping<span>free</span></li>
+                                <li class="last">Total<span>&#8358; {{$grandTotal}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -85,9 +109,16 @@
                         <h2>Payments</h2> <br>
                         <div class="single-widget get-button">
                             <div class="content">
-                                <div class="button">
-                                    <a href="payondelivery" class="btn">pay on delivery</a>
-                                </div>
+                                <form method="post" action="payondelivery" enctype="multipart/form-data" id="yourFormId">
+                                    @csrf
+                                    <input type="hidden" name="amount" value="{{$grandTotal}}"> {{-- required in kobo --}}
+                                    <input type="hidden" name="currency" value="NGN">
+                                    <input type="hidden" name="address" id="addressDisplay" readonly required>
+                                    <button class="btn btn-success btn-lg btn-block" type="submit">
+                                        pay on delivery
+                                    </button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -100,40 +131,33 @@
                     </div>
                     <!--/ End Payment Method Widget -->
                     <!-- Button Widget -->
-                    <?php
+<!--                    --><?php
+//
+//                    $split = [
+//                        "type" => "percentage",
+//                        "currency" => "NGN",
+//                        "subaccounts" => [
+//                            [ "subaccount" => "ACCT_li4p6kte2dolodo", "share" => 10 ],
+//                            [ "subaccount" => "ACCT_li4p6kte2dolodo", "share" => 30 ],
+//                        ],
+//                        "bearer_type" => "all",
+//                        "main_account_share" => 70
+//                    ];
+//                    ?>
 
-                    $split = [
-                        "type" => "percentage",
-                        "currency" => "NGN",
-                        "subaccounts" => [
-                            [ "subaccount" => "ACCT_li4p6kte2dolodo", "share" => 10 ],
-                            [ "subaccount" => "ACCT_li4p6kte2dolodo", "share" => 30 ],
-                        ],
-                        "bearer_type" => "all",
-                        "main_account_share" => 70
-                    ];
-                    ?>
-
-                    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form" id="yourFormId">
                        @csrf
                         <div class="row" style="margin-bottom:40px;">
                             <div class="col-md-8 col-md-offset-2">
-                                <p>
-                                <div>
-                                    Lagos Eyo Print Tee Shirt
-                                    ₦ 2,950
-                                </div>
-                                </p>
-                                <input type="hidden" name="email" value="otemuyiwa@gmail.com"> {{-- required --}}
-                                <input type="hidden" name="orderID" value="345">
-                                <input type="hidden" name="amount" value="800"> {{-- required in kobo --}}
-                                <input type="hidden" name="quantity" value="3">
+                                <input type="hidden" name="email" id="emailinput" value="{{Auth::user()->email}}"> {{-- required --}}
+                                <input type="hidden" name="amount" value="{{$grandTotal}}"> {{-- required in kobo --}}
                                 <input type="hidden" name="currency" value="NGN">
-                                <p>
-                                    <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
-                                        <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
+                                <input type="hidden" name="address" id="displayAddressInput" readonly required>
+
+                                    <button class="btn btn-success btn-lg btn-block" type="submit">
+                                        <i class="fa fa-plus-circle fa-lg">Pay Now</i>
                                     </button>
-                                </p>
+
                             </div>
                         </div>
                     </form>
@@ -145,6 +169,44 @@
         </div>
     </div>
 </section>
+
+<script>
+    // Get the address input and the target elements
+    const addressInput = document.getElementById('addressInput');
+    const addressDisplay = document.getElementById('addressDisplay');
+    const displayAddressInput = document.getElementById('displayAddressInput');
+
+    // Listen for the "input" event on the address input field
+    addressInput.addEventListener('input', function () {
+        const addressValue = addressInput.value;
+
+        // Update the content of the target span and input elements
+        addressDisplay.value = addressValue;
+        displayAddressInput.value = addressValue;
+    });
+</script>
+<script>
+    // Get the form and the hidden input field
+    const form = document.getElementById('yourFormId'); // Replace 'yourFormId' with the actual ID of your form
+    const payondivaddressInput = document.getElementById('addressDisplay');
+    const addressInput = document.getElementById('displayAddressInput');
+
+    console.log(payondivaddressInput);
+
+    // Listen for form submission
+    form.addEventListener('submit', function (event) {
+        // Check if the hidden input field has a value
+        if (addressInput.value.trim() === '' || payondivaddressInput.value.trim() === '') {
+            // If the hidden input is empty, prevent form submission
+            event.preventDefault();
+            // Optionally, you can show an error message or take other actions here
+        }
+
+
+    });
+</script>
+
+
 <!--/ End Checkout -->
 
 @include('pages.footer')

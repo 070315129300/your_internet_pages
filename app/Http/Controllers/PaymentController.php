@@ -23,9 +23,11 @@ class PaymentController extends Controller
     public function redirectToGateway()
     {
         $formData = [
-            'email' => request('email'),
+            'address' => request('address'),
             'amount' => request('amount') * 100,
-            'callback_url'=>route('page.callback')
+            'currency'=> request('currency'),
+            'callback_url'=>url('paymentcallback'),
+            'email'=> request('email')
         ];
 
         $pay = json_decode($this->initiate_payment($formData));
@@ -102,7 +104,7 @@ class PaymentController extends Controller
                     $cart = cart::find($cart_id);
                     $cart->delete();
                 }
-                return views('page.callback', compact('response'));
+                return views('pages.callback', compact('response'));
             }else{
                 return back()->withErrors($response->message);
             }

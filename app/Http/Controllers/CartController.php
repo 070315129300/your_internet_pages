@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\cart;
+use App\Models\order;
+
+
 
 class CartController extends Controller
 {
@@ -24,6 +27,12 @@ class CartController extends Controller
        {
          $user=Auth::user();
          $product=product::find($id);
+         $data = cart::where('product_id', $id)->get();
+         if($data){
+             return redirect()->back()->with('product already added to cart');
+         }else{
+
+
          $cart = new cart;
          $cart->name=$user->firstname;
          $cart->email=$user->email;
@@ -36,8 +45,8 @@ class CartController extends Controller
          $cart->image= $product->image1;
          $cart->save();
 
-        return redirect()->back();
-
+        return redirect()->back()->with('product added to cart');
+         }
        }else{
           return redirect('login');
        }

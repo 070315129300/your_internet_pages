@@ -48,15 +48,15 @@
 </head>
 <body class="js">
 
-<!-- Preloader -->
-<div class="preloader">
-    <div class="preloader-inner">
-        <div class="preloader-icon">
+{{--<!-- Preloader -->--}}
+{{--<div class="preloader">--}}
+{{--    <div class="preloader-inner">--}}
+{{--        <div class="preloader-icon">--}}
 
-        </div>
-    </div>
-</div>
-<!-- End Preloader -->
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
+{{--<!-- End Preloader -->--}}
 
 
 <!-- Header -->

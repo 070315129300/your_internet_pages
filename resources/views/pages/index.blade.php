@@ -47,16 +47,16 @@
 </head>
 <body class="js">
 
-<!-- Preloader -->
-<div class="preloader">
-    <div class="preloader-inner">
-        <div class="preloader-icon">
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</div>
-<!-- End Preloader -->
+{{--<!-- Preloader -->--}}
+{{--<div class="preloader">--}}
+{{--    <div class="preloader-inner">--}}
+{{--        <div class="preloader-icon">--}}
+{{--            <span></span>--}}
+{{--            <span></span>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
+{{--<!-- End Preloader -->--}}
 
 
 <!-- Header -->
@@ -299,7 +299,7 @@
                         <div class="row">
                             <div class="col-lg-7 col-12">
                                 <div class="hero-text">
-                                    <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
+                                    <h1><span style="color: white">UP TO 50% OFF </span>Watch For Man</h1>
                                     <p style="color: white">Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
                                     <div class="button">
                                         <a href="#" class="btn">Shop Now!</a>
@@ -355,7 +355,7 @@
                                                 <div class="product-img">
                                                     <a href="singleproduct/{{$products->id}}">
 
-                                                        <img class="default-img" src="productimage1/{{$products->image1}}" style="width: 200px; height: 300px;" alt="#">
+                                                        <img class="default-img" src="productimage1/{{$products->image1}}" style="width: 500px; height: 350px;" alt="#">
                                                         {{--                                                    <img class="hover-img" src="productimage/{{$products->image}}" style="width: 550px; height: 330px;" alt="#">--}}
                                                     </a>
                                                     <div class="button-head">

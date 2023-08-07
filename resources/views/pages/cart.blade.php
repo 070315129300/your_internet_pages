@@ -90,10 +90,26 @@
                         </div>
                         <div class="col-lg-4 col-md-7 col-12">
                             <div class="right">
+                                <ul style="display: none">
+                                @php
+                                    $grandTotal = 0; // Initialize the grand total variable
+                                @endphp
+
+                                @foreach($cart as $product)
+                                    <li>{{$product->name}} - {{$product->quantity}} x &#8358;{{$product->price}} = &#8358;{{$product->price * $product->quantity}}</li>
+                                    @php
+                                        $grandTotal += $product->price * $product->quantity; // Add the subtotal to the grand total
+                                    @endphp
+                                @endforeach
+
+                                </ul>
                                 <ul>
-                                    <li>Cart Subtotal<span>&#8358; {{$cartItem->price * $cartItem->quantity}}</span></li>
-                                    <li>Shipping<span>2500</span></li>
-                                    <li class="last">You Pay<span>&#8358; {{$cartItem->price * $cartItem->quantity}}</span></li>
+
+
+                                    <li>Cart Subtotal<span>&#8358; {{$grandTotal}}</span></li>
+
+                                    <li>Shipping<span>free</span></li>
+                                    <li class="last">You Pay<span>&#8358; {{$grandTotal}}</span></li>
                                 </ul>
                                 <div class="button5">
                                     <a href="checkoutpage" class="btn">Checkout</a>

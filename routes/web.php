@@ -78,7 +78,7 @@ Route::get('removequantity/{id}',[CartController::class, 'removequantity']);
 //Payment
 Route::post('payondelivery',[CartController::class,'payondelivery']);
 Route::post('pay',[PaymentController::class,'redirectToGateway'])->name('pay');
-Route::get('/paymentcallback', [PaymentController::class, 'handleGatewayCallback'])->name('name.callback');
+Route::get('paymentcallback', [PaymentController::class, 'handleGatewayCallback'])->name('name.callback');
 //admin panel
 Route::get('indexadmin', [AdminController::class, 'indexadmin']);
 Route::get('product',[AdminController::class,'product']);
