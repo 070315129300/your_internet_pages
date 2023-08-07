@@ -2,7 +2,6 @@ Here's a step-by-step guide on how to clone a Laravel project from GitHub, set i
 
 Prerequisites:
 
-Make sure you have Git installed on your computer. If not, you can download and install Git from the official website (https://git-scm.com/downloads).
 Ensure you have PHP and Composer installed on your local machine. You can download and install PHP from the official website (https://www.php.net/downloads) and Composer from the official website (https://getcomposer.org/download/).
 Clone the Laravel Project:
 
@@ -16,8 +15,7 @@ Replace <repository-url> with the URL of the GitHub repository where the Laravel
 
 bash
 Copy code
-git clone https://github.com/username/laravel-project.git
-Install Project Dependencies:
+git clone https://github.com/070315129300/your_internet_pages
 
 After cloning the project, navigate into the project directory using the cd command.
 bash
