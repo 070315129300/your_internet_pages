@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,38 +35,35 @@
 
                 </ul>
             </div>
-            <li style="text-align: right">
-                <a href="addproduct">AddProduct</a>
-            </li>
+
 
         </div>
 
         <div class="table-data">
             <div class="order">
                 <div class="head">
-                    <h3>All Product</h3>
+                    <h3>All User</h3>
 
                 </div>
                 <table>
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Brand Name</th>
-                        <th>Price</th>
-                        <th>Image</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($product as $products)
-                    <tr>
+                    @foreach($users as $user)
+                        <tr>
 
-                        <td>{{$products->name}}</td>
-                        <td>{{$products->brandname}}</td>
-                        <td>{{$products->price}}</td>
-                        <td>
-                            <img src="productimage1/{{$products->image1}}">
-                        </td>
-                    </tr>
+                            <td>{{$user->firstname}}</td>
+                            <td>{{$user->lastname}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->phone}}</td>
+
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

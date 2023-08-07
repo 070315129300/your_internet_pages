@@ -12,11 +12,7 @@
     <title>SMA</title>
 </head>
 <body>
-
-
 @include('admin.sidebar')
-
-
 
 <!-- CONTENT -->
 <section id="content">
@@ -33,8 +29,9 @@
                     </li>
                     <li><i class='bx bx-chevron-right' ></i></li>
                     <li>
-                        <a class="active" href="#">Order</a>
+                        <a class="active" >Order</a>
                     </li>
+
                 </ul>
             </div>
 
@@ -43,61 +40,49 @@
         <div class="table-data">
             <div class="order">
                 <div class="head">
-                    <h3>Recent Orders</h3>
-                    <i class='bx bx-search' ></i>
-                    <i class='bx bx-filter' ></i>
+                    <h3>All Order</h3>
+
                 </div>
                 <table>
                     <thead>
                     <tr>
-                        <th>User</th>
-                        <th>Date Order</th>
-                        <th>Status</th>
+                        <th>Image</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Quantity</th>
+                        <th>Payment Status</th>
+                        <th>Time of Order</th>
+
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status completed">Completed</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status process">Process</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status completed">Completed</span></td>
-                    </tr>
+                    @foreach($order as $products)
+                        <tr>
+                            <td>
+                                <img src="productimage1/{{$products->image}}">
+                            </td>
+                            <td>{{$products->firstname}}</td>
+                            <td>{{$products->lastname}}</td>
+
+                            <td>{{$products->phone}}</td>
+                            <td>{{$products->address}}</td>
+                            <td>{{$products->productname}}</td>
+                            <td>{{$products->price}}</td>
+                            <td>{{$products->quantity}}</td>
+                            <td>{{$products->payment_status}}</td>
+                            <td>{{$products->created_at}}</td>
+
+                        </tr>
+                    @endforeach
+
                     </tbody>
+
                 </table>
+                {{$order->links()}}
             </div>
 
         </div>
@@ -110,4 +95,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-

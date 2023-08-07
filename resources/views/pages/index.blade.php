@@ -216,46 +216,46 @@
                         <div class="all-category">
                             <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
                             <ul class="main-category">
-                                <li class="main-mega"><a href="">best selling <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    <ul class="mega-menu">
-                                        <li class="single-menu">
-                                            <a href="#" class="title-link">Shop Kid's</a>
-                                            <div class="image">
-                                                <img src="https://via.placeholder.com/225x155" alt="#">
-                                            </div>
-                                            <div class="inner-link">
-                                                <a href="#">Kids Toys</a>
-                                                <a href="#">Kids Travel Car</a>
-                                                <a href="#">Kids Color Shape</a>
-                                                <a href="#">Kids Tent</a>
-                                            </div>
-                                        </li>
-                                        <li class="single-menu">
-                                            <a href="#" class="title-link">Shop Men's</a>
-                                            <div class="image">
-                                                <img src="https://via.placeholder.com/225x155" alt="#">
-                                            </div>
-                                            <div class="inner-link">
-                                                <a href="#">Watch</a>
-                                                <a href="#">T-shirt</a>
-                                                <a href="#">Hoodies</a>
-                                                <a href="#">Formal Pant</a>
-                                            </div>
-                                        </li>
-                                        <li class="single-menu">
-                                            <a href="#" class="title-link">Shop Women's</a>
-                                            <div class="image">
-                                                <img src="https://via.placeholder.com/225x155" alt="#">
-                                            </div>
-                                            <div class="inner-link">
-                                                <a href="#">Ladies Shirt</a>
-                                                <a href="#">Ladies Frog</a>
-                                                <a href="#">Ladies Sun Glass</a>
-                                                <a href="#">Ladies Watch</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
+{{--                                <li class="main-mega"><a href="">best selling <i class="fa fa-angle-right" aria-hidden="true"></i></a>--}}
+{{--                                    <ul class="mega-menu">--}}
+{{--                                        <li class="single-menu">--}}
+{{--                                            <a href="#" class="title-link">Shop Kid's</a>--}}
+{{--                                            <div class="image">--}}
+{{--                                                <img src="https://via.placeholder.com/225x155" alt="#">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="inner-link">--}}
+{{--                                                <a href="#">Kids Toys</a>--}}
+{{--                                                <a href="#">Kids Travel Car</a>--}}
+{{--                                                <a href="#">Kids Color Shape</a>--}}
+{{--                                                <a href="#">Kids Tent</a>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                        <li class="single-menu">--}}
+{{--                                            <a href="#" class="title-link">Shop Men's</a>--}}
+{{--                                            <div class="image">--}}
+{{--                                                <img src="https://via.placeholder.com/225x155" alt="#">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="inner-link">--}}
+{{--                                                <a href="#">Watch</a>--}}
+{{--                                                <a href="#">T-shirt</a>--}}
+{{--                                                <a href="#">Hoodies</a>--}}
+{{--                                                <a href="#">Formal Pant</a>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                        <li class="single-menu">--}}
+{{--                                            <a href="#" class="title-link">Shop Women's</a>--}}
+{{--                                            <div class="image">--}}
+{{--                                                <img src="https://via.placeholder.com/225x155" alt="#">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="inner-link">--}}
+{{--                                                <a href="#">Ladies Shirt</a>--}}
+{{--                                                <a href="#">Ladies Frog</a>--}}
+{{--                                                <a href="#">Ladies Sun Glass</a>--}}
+{{--                                                <a href="#">Ladies Watch</a>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
                                 @foreach($category as $catogries)
                                 <li><a href="">{{$catogries->name}}</a></li>
                                 @endforeach
@@ -302,7 +302,7 @@
                                     <h1><span style="color: white">UP TO 50% OFF </span>Watch For Man</h1>
                                     <p style="color: white">Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
                                     <div class="button">
-                                        <a href="#" class="btn">Shop Now!</a>
+                                        <a href="productpage" class="btn">Shop Now!</a>
                                     </div>
                                 </div>
                             </div>
@@ -367,11 +367,10 @@
                                                         <div class="product-action-2">
                                                             <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
                                                                 @csrf
-                                                                <submit><a>add to cart</a> </submit>
-                                                                <input type="number" name="quantity" value="1" hidden>
-                                                                <input type="submit" value="add">
-                                                            </form>
 
+                                                                <input type="number" name="quantity" value="1" hidden>
+                                                                <input class="btn btn-outline-warning" type="submit" value="add to cart">
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -430,9 +429,9 @@
                                             <div class="product-action-2">
                                                 <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
                                                     @csrf
-                                                    <submit><a>add to cart</a> </submit>
+
                                                     <input type="number" name="quantity" value="1" hidden>
-                                                    <input type="submit" value="add">
+                                                    <input class="btn btn-outline-warning" type="submit" value="add to cart">
                                                 </form>
                                             </div>
                                         </div>
@@ -446,28 +445,6 @@
                                 </div>
 
                         @endforeach
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="singleproduct">
-                                <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                            </a>
-                            <div class="button-head">
-                                <div class="product-action">
-                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a title="Add to cart" href="cartpage">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="singleproduct">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span>$29.00</span>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>

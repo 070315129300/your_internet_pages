@@ -5,20 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\brand;
 use App\Models\category;
 use App\Models\message;
+use App\Models\order;
 use App\Models\product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function indexadmin(){
-        return view('admin.index');
+        $message = message::paginate(5);
+        $order = order::paginate(5);
+        $user = user::all();
+        $product = product::all();
+        return view('admin.index', compact('message', 'order', 'user', 'product'));
     }
     public function product(){
-        $product = product::all();
+        $product = product::paginate(20);
         return view('admin.product', compact('product'));
     }
     public function order(){
-        return view('admin.order');
+        $order = order::paginate(5);
+        return view('admin.order', compact('order'));
     }
     public function message(){
         $message = message::all();

@@ -26,11 +26,14 @@ class CartController extends Controller
        if(Auth::id())
        {
          $user=Auth::user();
+
          $product=product::find($id);
-         $data = cart::where('product_id', $id)->get();
-         if($data){
-             return redirect()->back()->with('product already added to cart');
-         }else{
+
+//         $data = cart::where('product_id', $id)->get();
+//
+//           if (!$data->isEmpty()){
+//             return redirect()->back()->with('product already added to cart');
+//         }else{
 
 
          $cart = new cart;
@@ -46,7 +49,7 @@ class CartController extends Controller
          $cart->save();
 
         return redirect()->back()->with('product added to cart');
-         }
+        // }
        }else{
           return redirect('login');
        }

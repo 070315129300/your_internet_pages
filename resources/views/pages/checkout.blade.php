@@ -131,20 +131,9 @@
                     </div>
                     <!--/ End Payment Method Widget -->
                     <!-- Button Widget -->
-<!--                    --><?php
-//
-//                    $split = [
-//                        "type" => "percentage",
-//                        "currency" => "NGN",
-//                        "subaccounts" => [
-//                            [ "subaccount" => "ACCT_li4p6kte2dolodo", "share" => 10 ],
-//                            [ "subaccount" => "ACCT_li4p6kte2dolodo", "share" => 30 ],
-//                        ],
-//                        "bearer_type" => "all",
-//                        "main_account_share" => 70
-//                    ];
-//                    ?>
 
+                    <div class="single-widget payement">
+                        <div class="content">
                     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form" id="yourFormId">
                        @csrf
                         <div class="row" style="margin-bottom:40px;">
@@ -155,12 +144,14 @@
                                 <input type="hidden" name="address" id="displayAddressInput" readonly required>
 
                                     <button class="btn btn-success btn-lg btn-block" type="submit">
-                                        <i class="fa fa-plus-circle fa-lg">Pay Now</i>
+                                        Pay Now
                                     </button>
 
                             </div>
                         </div>
                     </form>
+                    </div>
+                    </div>
 
 
                     <!--/ End Button Widget -->

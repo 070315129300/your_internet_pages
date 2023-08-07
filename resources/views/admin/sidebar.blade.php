@@ -2,7 +2,7 @@
 <section id="sidebar">
     <a href="indexadmin" class="brand">
         <i class='bx bxs-smile'></i>
-        <span class="text">AdminHub</span>
+        <span class="text">SMA</span>
     </a>
     <ul class="side-menu top">
         <li class="active">
@@ -18,7 +18,7 @@
             </a>
         </li>
         <li>
-            <a href="order">
+            <a href="orders">
                 <i class='bx bxs-doughnut-chart' ></i>
                 <span class="text">Order</span>
             </a>
@@ -42,31 +42,45 @@
             </a>
         </li>
         <li>
-            <a href="team">
-                <i class='bx bxs-group' ></i>
-                <span class="text">Team</span>
+            <a href="getAllUser">
+                <i class='bx bxs-doughnut-chart' ></i>
+                <span class="text">User</span>
             </a>
         </li>
+{{--        <li >--}}
+{{--            <a href="team" >--}}
+{{--                <i class='bx bxs-group' ></i>--}}
+{{--                <span class="text">Team</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
     </ul>
     <ul class="side-menu">
-        <li>
-            <a href="#">
-                <i class='bx bxs-cog' ></i>
-                <span class="text">Settings</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bxs-cog' ></i>
-                <span class="text">Admin Control</span>
-            </a>
-        </li>
-        <li>
-            <a href="logout" class="logout">
-                <i class='bx bxs-log-out-circle' ></i>
-                <span class="text">Logout</span>
-            </a>
-        </li>
+{{--        <li>--}}
+{{--            <a href="#">--}}
+{{--                <i class='bx bxs-cog' ></i>--}}
+{{--                <span class="text">Settings</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
+{{--        <li>--}}
+{{--            <a href="#">--}}
+{{--                <i class='bx bxs-cog' ></i>--}}
+{{--                <span class="text">Admin Control</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
+
+            <li style="margin-left: 40px">
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-dropdown-link :href="route('logout')"
+                                     onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                        <i class="ti-power-off"></i><strong>Logout</strong>
+
+                    </x-dropdown-link>
+                </form>
+            </li>
     </ul>
 </section>
 <!-- SIDEBAR -->

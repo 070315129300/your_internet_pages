@@ -24,7 +24,7 @@
                                             <div class="product-img">
                                                 <a href="singleproduct/{{$products->id}}">
 
-                                                    <img class="default-img" src="productimage1/{{$products->image1}}" style="width: 200px; height: 300px;"  alt="#">
+                                                    <img class="default-img" src="productimage1/{{$products->image1}}" style="width: 500px; height: 350px;"  alt="#">
 {{--                                                    <img class="hover-img" src="productimage/{{$products->image}}" style="width: 550px; height: 330px;" alt="#">--}}
                                                 </a>
                                                 <div class="button-head">
@@ -36,9 +36,9 @@
                                                     <div class="product-action-2">
                                                         <form action="addcart/{{$products->id}}"method="post" enctype="multipart/form-data">
                                                             @csrf
-                                                            <submit><a>add to cart</a> </submit>
+
                                                             <input type="number" name="quantity" value="1" hidden>
-                                                            <input type="submit" value="add">
+                                                            <input class="btn btn-outline-warning" type="submit" value="add to cart">
                                                         </form>
                                                     </div>
                                                 </div>

@@ -33,7 +33,7 @@
                     </li>
                     <li><i class='bx bx-chevron-right' ></i></li>
                     <li>
-                        <a class="active" href="#">Order</a>
+                        <a class="active" href="#">Edit Product</a>
                     </li>
                 </ul>
             </div>
@@ -43,9 +43,7 @@
         <div class="table-data">
             <div class="order">
                 <div class="head">
-                    <h3>Recent Orders</h3>
-                    <i class='bx bx-search' ></i>
-                    <i class='bx bx-filter' ></i>
+                    <h3>Edit Product</h3>
                 </div>
                 <table>
                     <thead>

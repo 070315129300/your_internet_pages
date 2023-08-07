@@ -44,8 +44,7 @@
             <div class="order">
                 <div class="head">
                     <h3>Add A Product</h3>
-                    <i class='bx bx-search' ></i>
-                    <i class='bx bx-filter' ></i>
+
                 </div>
                 <form action="{{url('createProduct')}}" method="POST" enctype="multipart/form-data">
                     @csrf

@@ -12,14 +12,11 @@ class UserController extends Controller
 {
     // Get All User
     public function getAllUser(){
-        try {
-            $users = User::all()->orderBy('id', 'desc')->get();
 
-            return $this->success(false, "User!", $users, 200);
+            $users = User::all();
 
-        } catch (Exception $e) {
-            return $this->fail(true, "Couldn't fetch students!", $e->getMessage(), 400);
-        }
+            return view('admin.user', compact('users'));
+
     }
 
     //Get a single user

@@ -1,4 +1,17 @@
-@include('admin.header')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- My CSS -->
+    <link rel="stylesheet" href="adminstyle.css">
+
+    <title>SMA</title>
+</head>
+<body>
 @include('admin.sidebar')
 
 
@@ -29,8 +42,7 @@
             <div class="order">
                 <div class="head">
                     <h3>All Messages</h3>
-                    <i class='bx bx-search' ></i>
-                    <i class='bx bx-filter' ></i>
+
                 </div>
                 <table>
                     <thead>
