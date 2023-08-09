@@ -80,7 +80,7 @@
                     <div class="right-content">
                         <ul class="list-main">
 
-                            <li><i class="ti-user"></i> <a href="#">My account</a></li>
+                            <li><i class="ti-user"></i> <a href="accountmanage">My account</a></li>
                             @if( Auth::user())
                                 <li>
                                 <form method="POST" action="{{ route('logout') }}">
@@ -297,6 +297,15 @@
                 <div class="col-lg-9 offset-lg-3 col-12">
                     <div class="text-inner">
                         <div class="row">
+                            @if(session()->has('message'))
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert">
+                                        x
+                                    </button>
+
+                                    {{session()->get('message')}}
+                                </div>
+                            @endif
                             <div class="col-lg-7 col-12">
                                 <div class="hero-text">
                                     <h1><span style="color: white">UP TO 50% OFF </span>Watch For Man</h1>

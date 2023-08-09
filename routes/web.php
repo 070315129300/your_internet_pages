@@ -31,10 +31,12 @@ require __DIR__.'/auth.php';
 Route::get('/', [PagesController::class,'index']);
 Route::get('productpage', [PagesController::class,'productpage']);
 Route::get('cartpage', [PagesController::class,'cartpage'])->middleware(['auth', 'verified']);
-Route::get('contact', [PagesController::class,'contact']);
+Route::get('contact', [PagesController::class,'contact'])->middleware(['auth', 'verified']);
 Route::get('checkoutpage', [PagesController::class,'checkoutpage'])->middleware(['auth', 'verified']);
 Route::get('singleproduct/{id}', [PagesController::class,'singleproduct']);
 Route::get('/dashboard',[PagesController::class,'redirect']);
+Route::get('/accountmanage',[PagesController::class,'accountmanage']);
+
 
 
 // user

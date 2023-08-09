@@ -80,7 +80,7 @@
                     <div class="right-content">
                         <ul class="list-main">
 
-                            <li><i class="ti-user"></i> <a href="#">My account</a></li>
+                            <li><i class="ti-user"></i> <a href="accountmanage">My account</a></li>
                             @if( Auth::user())
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
@@ -152,11 +152,11 @@
                         <!-- Search Form -->
                         @if( ! Auth::user())
                             <div class="sinlge-bar">
-                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                <a  class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                             </div>
                         @else
                             <div class="sinlge-bar">
-                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Hello {{Auth::user()->firstname}}</i></a>
+                                <a  class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Hello {{Auth::user()->firstname}}</i></a>
 
                             </div>
                         @endif

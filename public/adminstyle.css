@@ -46,12 +46,8 @@ body {
 	overflow-x: hidden;
 }
 
-
-
-
-
 /* SIDEBAR */
-#sidebar {
+#sidebars {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -64,13 +60,13 @@ body {
 	overflow-x: hidden;
 	scrollbar-width: none;
 }
-#sidebar::--webkit-scrollbar {
+#sidebars::--webkit-scrollbar {
 	display: none;
 }
-#sidebar.hide {
+#sidebars.hide {
 	width: 60px;
 }
-#sidebar .brand {
+#sidebars .brand {
 	font-size: 24px;
 	font-weight: 700;
 	height: 56px;
@@ -85,27 +81,27 @@ body {
 	padding-bottom: 20px;
 	box-sizing: content-box;
 }
-#sidebar .brand .bx {
+#sidebars .brand .bx {
 	min-width: 60px;
 	display: flex;
 	justify-content: center;
 }
-#sidebar .side-menu {
+#sidebars .side-menu {
 	width: 100%;
 	margin-top: 48px;
 }
-#sidebar .side-menu li {
+#sidebars .side-menu li {
 	height: 48px;
 	background: transparent;
 	margin-left: 6px;
 	border-radius: 48px 0 0 48px;
 	padding: 4px;
 }
-#sidebar .side-menu li.active {
+#sidebars .side-menu li.active {
 	background: var(--grey);
 	position: relative;
 }
-#sidebar .side-menu li.active::before {
+#sidebars .side-menu li.active::before {
 	content: '';
 	position: absolute;
 	width: 40px;
@@ -116,7 +112,7 @@ body {
 	box-shadow: 20px 20px 0 var(--grey);
 	z-index: -1;
 }
-#sidebar .side-menu li.active::after {
+#sidebars .side-menu li.active::after {
 	content: '';
 	position: absolute;
 	width: 40px;
@@ -127,7 +123,7 @@ body {
 	box-shadow: 20px -20px 0 var(--grey);
 	z-index: -1;
 }
-#sidebar .side-menu li a {
+#sidebars .side-menu li a {
 	width: 100%;
 	height: 100%;
 	background: var(--light);
@@ -138,21 +134,21 @@ body {
 	color: var(--dark);
 	white-space: nowrap;
 	overflow-x: hidden;
-}
-#sidebar .side-menu.top li.active a {
+}s
+#sidebars .side-menu.top li.active a {
 	color: var(--blue);
 }
-#sidebar.hide .side-menu li a {
+#sidebars.hide .side-menu li a {
 	width: calc(48px - (4px * 2));
 	transition: width .3s ease;
 }
-#sidebar .side-menu li a.logout {
+#sidebars .side-menu li a.logout {
 	color: var(--red);
 }
-#sidebar .side-menu.top li a:hover {
+#sidebars .side-menu.top li a:hover {
 	color: var(--blue);
 }
-#sidebar .side-menu li a .bx {
+#sidebars .side-menu li a .bx {
 	min-width: calc(60px  - ((4px + 6px) * 2));
 	display: flex;
 	justify-content: center;
@@ -170,7 +166,7 @@ body {
 	left: 280px;
 	transition: .3s ease;
 }
-#sidebar.hide ~ #content {
+#sidebars.hide ~ #content {
 	width: calc(100% - 60px);
 	left: 60px;
 }
@@ -400,7 +396,7 @@ body {
 	color: var(--dark);
 }
 #content main .box-info li .text p {
-	color: var(--dark);	
+	color: var(--dark);
 }
 
 
@@ -521,13 +517,8 @@ body {
 
 
 
-
-
-
-
-
 @media screen and (max-width: 768px) {
-	#sidebar {
+	#sidebars {
 		width: 200px;
 	}
 

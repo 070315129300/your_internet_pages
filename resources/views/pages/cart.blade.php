@@ -23,6 +23,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">
+                            x
+                        </button>
+
+                        {{session()->get('message')}}
+                    </div>
+            @endif
                 <!-- Shopping Summery -->
                 <table class="table shopping-summery">
                     <thead>

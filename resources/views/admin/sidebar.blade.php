@@ -1,5 +1,5 @@
 <!-- SIDEBAR -->
-<section id="sidebar">
+<section id="sidebars">
     <a href="indexadmin" class="brand">
         <i class='bx bxs-smile'></i>
         <span class="text">SMA</span>

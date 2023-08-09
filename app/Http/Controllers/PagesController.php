@@ -128,6 +128,14 @@ class PagesController extends Controller
         $cart = Cart::where('user_id',$id )->get();
         return view('pages/singleproduct', compact('product', 'category','cart'));
     }
+    public function accountmanage(){
+
+        $category = category::all();
+        $user=Auth::user();
+        $id = $user->id;
+        $cart = Cart::where('user_id',$id )->get();
+        return view('pages/account_management', compact('category','cart'));
+    }
 
 }
 

@@ -25,6 +25,15 @@
                 <div class="col-lg-8 col-12">
                     <div class="form-main">
                         <div class="title">
+                            @if(session()->has('message'))
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert">
+                                        x
+                                    </button>
+
+                                    {{session()->get('message')}}
+                                </div>
+                            @endif
                             <h4>Get in touch</h4>
                             <h3>Write us a message</h3>
                         </div>

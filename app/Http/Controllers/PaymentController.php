@@ -104,12 +104,13 @@ class PaymentController extends Controller
                     $cart = cart::find($cart_id);
                     $cart->delete();
                 }
-                return views('pages.callback', compact('response'));
+                return redirect()->back()->with('message', 'Order was successfully ');
+
             }else{
-                return back()->withErrors($response->message);
+                return back()->withErrors('message',$response->message);
             }
         }else{
-            return back()->withErrors('Something is wrong');
+            return back()->withErrors('message','Something is wrong');
         }
     }
 

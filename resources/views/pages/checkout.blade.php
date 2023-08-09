@@ -23,6 +23,15 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-12">
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">
+                            x
+                        </button>
+
+                        {{session()->get('message')}}
+                    </div>
+                @endif
                 <div class="checkout-form">
                     <h2>Make Your Checkout Here</h2>
 

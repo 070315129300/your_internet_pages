@@ -48,7 +48,7 @@ class CartController extends Controller
          $cart->image= $product->image1;
          $cart->save();
 
-        return redirect()->back()->with('product added to cart');
+        return redirect()->back()->with('message','product added to cart');
         // }
        }else{
           return redirect('login');
@@ -63,7 +63,7 @@ class CartController extends Controller
         $cartItem->delete();
 
         // Redirect back to the cart page or show a success message
-        return back()->with('success', 'Product removed from cart.');
+        return back()->with('message', 'Product removed from cart.');
     }
 
     public  function addquantity($id){
