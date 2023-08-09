@@ -74,6 +74,15 @@
                     <h3>All Category</h3>
 
                 </div>
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">
+                            x
+                        </button>
+
+                        {{session()->get('message')}}
+                    </div>
+                @endif
                 <table>
                     <thead>
                     <tr>
@@ -87,6 +96,8 @@
                         <td>{{$categories->name}}</td>
                         <td><span class="status completed">{{$categories->available}}</span></td>
                         <td><span class="status pending" data-bs-toggle="modal" data-bs-target="#staticBackdropedit">edit</span></td>
+                        <td><a class="btn btn-danger" onclick="return confirm('are you sure you want to delete this category')" href="{{url('deleteCat', $categories->id)}}">Delete</a></td>
+
                     </tr>
                     @endforeach
 
@@ -138,7 +149,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js
 "></script>
-<script src="script.js"></script>
-</body>
-</html>
+@include('admin.footer')
 

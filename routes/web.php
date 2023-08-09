@@ -59,12 +59,12 @@ Route::delete('deleteAPromo', [PromoController::class, 'deleteAPromo']);
 Route::post('createCategory', [CategoryController::class, 'createCategory']);
 Route::post('editCategory/{id}', [CategoryController::class, 'editCategory']);
 Route::get('listAllCategory', [CategoryController::class, 'listAllCategory']);
-Route::delete('deleteACategory', [CategoryController::class, 'deleteACategory']);
+Route::get('deleteCat/{id}', [CategoryController::class, 'deleteACategory']);
 //Brand
 Route::post('createBrand', [BrandController::class, 'createBrand']);
 Route::post('editBrand/{id}', [BrandController::class, 'editBrand']);
 Route::get('listAllBrand', [BrandController::class, 'listAllBrand']);
-Route::delete('deleteABrand', [BrandController::class, 'deleteABrand']);
+Route::get('deleteBrand', [BrandController::class, 'deleteABrand']);
 // product
 Route::get('listAllProducts',[ProductController::class, 'listAllProducts']);
 Route::get('listAProducts/id',[ProductController::class, 'listAProducts']);

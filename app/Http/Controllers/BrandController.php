@@ -43,12 +43,10 @@ class BrandController extends Controller
     }
     // Delete A Brand
     public function deleteABrand($brandid){
-        try{
+
             $brand = brand::find($brandid);
             $brand->delete();
-            return $this->success(false, "brand deleted!", $brand, 200 );
-        }catch (Exception $e){
-            return $this->fail(true, "Couldn't delete brand", $e->getMessage(), 400);
-        }
+        return redirect()->back()->with('message', 'Brand Deleted ');
+
     }
 }

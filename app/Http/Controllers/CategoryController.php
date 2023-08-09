@@ -43,12 +43,10 @@ class CategoryController extends Controller
     }
     // Delete A Category
     public function deleteACategory($categoryid){
-        try{
+
             $category = category::find($categoryid);
             $category->delete();
-            return $this->success(false, "brand deleted!", $category, 200 );
-        }catch (Exception $e){
-            return $this->fail(true, "Couldn't delete brand", $e->getMessage(), 400);
-        }
+        return redirect()->back()->with('message', 'Category Deleted ');
+
     }
 }
